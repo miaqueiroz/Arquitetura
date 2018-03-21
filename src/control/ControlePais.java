@@ -7,26 +7,26 @@ package control;
 
 import static java.lang.System.exit;
 import java.util.ArrayList;
-import model.Cliente;
+import model.Pais;
 
 /**
  *
  * @author Aluno
  */
-public class ControleCliente {
-    ArrayList<Cliente> clientes = new ArrayList<>();
+public class ControlePais {
+    ArrayList<Pais> paises = new ArrayList<>();
     
-    
-    public void inserirCliente(Cliente c){
+    public void inserirPais(Pais p){
         int i = 0;
-        while(clientes != null){
-            if(c.getNome().equals(clientes.get(i).getNome()) || c.getNome().length() < 5){
-                System.out.println("NOME INCORRETO OU JA CADASTRADO.");
+        while(paises != null){
+            if(p.getNome().equals(paises.get(i).getNome()) || p.getNome().equals("") || p.getSigla().equals("")){
+                System.out.println("PAÍS JA CADASTRADO OU CAMPO NÃO INFORMADO.");
                 exit(0);
             }
             
             i++;    
         }
-        clientes.add(c);
+        paises.add(p);
     }
+    
 }

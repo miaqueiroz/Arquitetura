@@ -8,6 +8,7 @@ package view;
 import static java.lang.Integer.parseInt;
 import model.Cliente;
 import control.ControleCliente;
+import model.Pais;
 
 /**
  *
@@ -16,6 +17,7 @@ import control.ControleCliente;
 public class InserirCliente extends javax.swing.JFrame {
     Cliente c = new Cliente();
     ControleCliente lista = new ControleCliente();
+    Pais p = new Pais();
     
     public InserirCliente() {
         initComponents();
@@ -33,8 +35,10 @@ public class InserirCliente extends javax.swing.JFrame {
         jTFNome = new javax.swing.JTextField();
         jTFIdade = new javax.swing.JTextField();
         jTFTelefone = new javax.swing.JTextField();
-        jSPais = new javax.swing.JSpinner();
         jBInserir = new javax.swing.JButton();
+        jTFPais = new javax.swing.JTextField();
+        jLSigla = new javax.swing.JLabel();
+        jTFSigla = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +71,8 @@ public class InserirCliente extends javax.swing.JFrame {
             }
         });
 
+        jLSigla.setText("Sigla:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,50 +81,56 @@ public class InserirCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLNome)
-                                .addGap(18, 18, 18)
+                                .addGap(22, 22, 22)
                                 .addComponent(jTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLIdade)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTFIdade))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLTelefone)
                                     .addComponent(jLPais))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jSPais)
-                                    .addComponent(jTFTelefone)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTFTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                    .addComponent(jTFPais))
+                                .addGap(8, 8, 8)
+                                .addComponent(jLSigla)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTFSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLIdade)
+                                .addGap(21, 21, 21)
+                                .addComponent(jTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
+                        .addGap(92, 92, 92)
                         .addComponent(jBInserir)))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLNome)
                     .addComponent(jTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLIdade)
                     .addComponent(jTFIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLTelefone)
-                    .addComponent(jTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                    .addComponent(jTFTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLTelefone))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLPais))
+                    .addComponent(jLPais)
+                    .addComponent(jTFPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLSigla)
+                    .addComponent(jTFSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jBInserir)
-                .addContainerGap())
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -137,6 +149,11 @@ public class InserirCliente extends javax.swing.JFrame {
         c.setNome(jTFNome.getText());
         c.setIdade(parseInt(jTFIdade.getText()));
         c.setTelefone(jTFTelefone.getText());
+        try{
+            if(jTFPais.getText())
+                    c.setPais(jTFPais.getText());
+        }c.setPais(jTFPais.getText());
+        
         lista.inserirCliente(c);
     }//GEN-LAST:event_jBInserirActionPerformed
 
@@ -180,10 +197,12 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLIdade;
     private javax.swing.JLabel jLNome;
     private javax.swing.JLabel jLPais;
+    private javax.swing.JLabel jLSigla;
     private javax.swing.JLabel jLTelefone;
-    private javax.swing.JSpinner jSPais;
     private javax.swing.JTextField jTFIdade;
     private javax.swing.JTextField jTFNome;
+    private javax.swing.JTextField jTFPais;
+    private javax.swing.JTextField jTFSigla;
     private javax.swing.JTextField jTFTelefone;
     // End of variables declaration//GEN-END:variables
 }
