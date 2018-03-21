@@ -5,7 +5,9 @@
  */
 package view;
 
+import static java.lang.Integer.parseInt;
 import model.Cliente;
+import control.ControleCliente;
 
 /**
  *
@@ -13,8 +15,8 @@ import model.Cliente;
  */
 public class InserirCliente extends javax.swing.JFrame {
     Cliente c = new Cliente();
-
-  
+    ControleCliente lista = new ControleCliente();
+    
     public InserirCliente() {
         initComponents();
     }
@@ -131,7 +133,11 @@ public class InserirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFNomeActionPerformed
 
     private void jBInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirActionPerformed
+
         c.setNome(jTFNome.getText());
+        c.setIdade(parseInt(jTFIdade.getText()));
+        c.setTelefone(jTFTelefone.getText());
+        lista.inserirCliente(c);
     }//GEN-LAST:event_jBInserirActionPerformed
 
     /**
