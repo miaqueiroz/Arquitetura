@@ -111,11 +111,10 @@ public class Cliente {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
-        return "Cliente{" + "nome=" + nome + ", telefone=" + telefone + ", limite=" + limite + ", pais=" + pais + '}';
+        return "Cliente{" + "nome=" + nome + ", telefone=" + telefone + ", limite=" + limite + ", pais=" + pais + ", idade=" + idade + '}';
     }
-    
     
 }
