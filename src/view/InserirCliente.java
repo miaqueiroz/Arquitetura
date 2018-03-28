@@ -212,7 +212,7 @@ public class InserirCliente extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-
+        c.setIdade(new Integer(jTFIdade.getText()));
         try {
             c.setPais(paisSelecionado);
 
@@ -227,9 +227,8 @@ public class InserirCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
 
-        c.setIdade(new Integer(jTFIdade.getText()));
-        c.setLimite(0);
-
+        
+        
         try {
             clienteControle.inserirCliente(c);
             limpaCampos();
