@@ -68,7 +68,7 @@ public class Cliente {
 
     public void setPais(Pais pais) {
         this.pais = pais;
-        if(pais.equals("Brasil")){
+        if(pais.getNome().equals("Brasil")){
             this.limite += 100.00; 
         }
     }
@@ -115,7 +115,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "nome=" + nome + ", telefone=" + telefone + ", limite=" + limite + ", pais=" + pais + ", idade=" + idade + '}';
+        return "\nCliente{" + "nome=" + nome + ", telefone=" + telefone + ", limite=" + limite + ", pais=" + pais + ", idade=" + idade + '}';
     }
     
 }

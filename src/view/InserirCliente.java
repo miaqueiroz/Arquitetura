@@ -213,12 +213,7 @@ public class InserirCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
         c.setIdade(new Integer(jTFIdade.getText()));
-        try {
-            c.setPais(paisSelecionado);
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
+        c.setPais(paisSelecionado);
 
         try {
             c.setTelefone(jTFTelefone.getText());
@@ -226,9 +221,6 @@ public class InserirCliente extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-
-        
-        
         try {
             clienteControle.inserirCliente(c);
             limpaCampos();

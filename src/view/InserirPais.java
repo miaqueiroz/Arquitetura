@@ -59,16 +59,11 @@ public class InserirPais extends javax.swing.JFrame {
 
         jLDigitos.setText("Digitos de Telefone:");
 
-        jTFNomePais.setText(" ");
-
-        jTFSiglaPais.setText(" ");
         jTFSiglaPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFSiglaPaisActionPerformed(evt);
             }
         });
-
-        jTFDigitos.setText(" ");
 
         jTAList.setColumns(20);
         jTAList.setRows(5);
