@@ -53,6 +53,7 @@ public class InserirCliente extends javax.swing.JFrame {
         jBListar = new javax.swing.JButton();
         jSPList = new javax.swing.JScrollPane();
         jTAList = new javax.swing.JTextArea();
+        jBCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,21 +65,18 @@ public class InserirCliente extends javax.swing.JFrame {
 
         jLTelefone.setText("Telefone: ");
 
-        jTFNome.setText("            ");
         jTFNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNomeActionPerformed(evt);
             }
         });
 
-        jTFIdade.setText(" ");
         jTFIdade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFIdadeActionPerformed(evt);
             }
         });
 
-        jCBPais.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jCBPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBPaisActionPerformed(evt);
@@ -150,6 +148,13 @@ public class InserirCliente extends javax.swing.JFrame {
         jTAList.setRows(5);
         jSPList.setViewportView(jTAList);
 
+        jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,10 +169,12 @@ public class InserirCliente extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(46, 46, 46)
                         .addComponent(jBInserir)
-                        .addGap(18, 18, 18)
-                        .addComponent(jBListar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBListar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBCancelar)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -180,7 +187,8 @@ public class InserirCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBInserir)
-                    .addComponent(jBListar))
+                    .addComponent(jBListar)
+                    .addComponent(jBCancelar))
                 .addContainerGap())
         );
 
@@ -224,9 +232,10 @@ public class InserirCliente extends javax.swing.JFrame {
 
         try {
             clienteControle.inserirCliente(c);
-
+            limpaCampos();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
+            dispose();
         }
     }//GEN-LAST:event_jBInserirActionPerformed
 
@@ -242,8 +251,13 @@ public class InserirCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCBPaisActionPerformed
 
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBInserir;
     private javax.swing.JButton jBListar;
     private javax.swing.JComboBox<String> jCBPais;
@@ -258,4 +272,10 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JTextField jTFNome;
     private javax.swing.JTextField jTFTelefone;
     // End of variables declaration//GEN-END:variables
+    public void limpaCampos(){
+        jTFNome.setText("");
+        jTFIdade.setText("");
+        jTFTelefone.setText("");
+        jCBPais.setName("");
+    }
 }

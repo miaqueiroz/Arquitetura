@@ -3,6 +3,7 @@ package control;
 
 import static java.lang.System.exit;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Pais;
 
 /**
@@ -12,15 +13,9 @@ import model.Pais;
 public class ControlePais {
     ArrayList<Pais> paises = new ArrayList<>();
     
-    public void inserirPais(Pais p){
-        int i = 0;
-        while(paises != null){
-            if(p.getNome().equals(paises.get(i).getNome()) || p.getNome().equals("") || p.getSigla().equals("")){
-                System.out.println("PAÍS JA CADASTRADO OU CAMPO NÃO INFORMADO.");
-                exit(0);
-            }
-            
-            i++;    
+    public void inserirPais(Pais p)throws Exception{
+        if(paises.contains(p) || p.getNome().equals("") || p.getSigla().equals("")){
+            throw new Exception ("PAÍS JA CADASTRADO OU CAMPO NÃO INFORMADO.");
         }
         paises.add(p);
     }

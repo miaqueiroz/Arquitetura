@@ -42,6 +42,7 @@ public class InserirPais extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAList = new javax.swing.JTextArea();
         jBListar = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,18 +121,27 @@ public class InserirPais extends javax.swing.JFrame {
             }
         });
 
+        jBCancelar.setText("Cancelar");
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addGap(51, 51, 51)
                 .addComponent(jBInserirPais)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jBListar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBCancelar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -141,7 +151,8 @@ public class InserirPais extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBInserirPais)
-                    .addComponent(jBListar))
+                    .addComponent(jBListar)
+                    .addComponent(jBCancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -161,9 +172,10 @@ public class InserirPais extends javax.swing.JFrame {
         
         try {
             paisControle.inserirPais(p);
-            
+            limpaCampos();
         } catch (Exception ex) {
             JOptionPane.showConfirmDialog(this, ex.getMessage());
+            dispose();
         }
     }//GEN-LAST:event_jBInserirPaisActionPerformed
 
@@ -171,12 +183,18 @@ public class InserirPais extends javax.swing.JFrame {
         jTAList.setText(paisControle.list().toString());
     }//GEN-LAST:event_jBListarActionPerformed
 
+    
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBInserirPais;
     private javax.swing.JButton jBListar;
     private javax.swing.JLabel jLDigitos;
@@ -189,4 +207,10 @@ public class InserirPais extends javax.swing.JFrame {
     private javax.swing.JTextField jTFNomePais;
     private javax.swing.JTextField jTFSiglaPais;
     // End of variables declaration//GEN-END:variables
+
+    public void limpaCampos(){
+        jTFNomePais.setText("");
+        jTFSiglaPais.setText("");
+        jTFDigitos.setText("");
+    }
 }

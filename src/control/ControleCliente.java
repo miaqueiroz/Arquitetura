@@ -13,15 +13,9 @@ public class ControleCliente {
     ArrayList<Cliente> clientes = new ArrayList<>();
     
     
-    public void inserirCliente(Cliente c){
-        int i = 0;
-        while(clientes != null){
-            if(c.getNome().equals(clientes.get(i).getNome()) || c.getNome().length() < 5){
-                System.out.println("NOME INCORRETO OU JA CADASTRADO.");
-                exit(0);
-            }
-            
-            i++;    
+    public void inserirCliente(Cliente c) throws Exception {
+        if(clientes.contains(c) || c.getNome().length() < 5){
+            throw new Exception("NOME INCORRETO OU JA CADASTRADO.");
         }
         clientes.add(c);
     }
