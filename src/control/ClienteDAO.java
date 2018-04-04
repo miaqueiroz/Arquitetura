@@ -20,18 +20,19 @@ public class ClienteDAO {
         clientes.add(c);
     }
     
-    public int lerCliente(String nome){ 
+    public Cliente lerCliente(String nome){ 
         for(int i = 0; i < clientes.size() ; i++){
             if(clientes.get(i).getNome().equals(nome)){
-                return i;
+                return clientes.get(i);
             }
         } 
-        return -1;        
+        return null;        
     }
     
-    public void alterarCliente(Cliente c, int id){
-        this.clientes.get(id).setNome(c.getNome());
-                
+    public void alterarCliente(Cliente c){
+        lerCliente(c.getNome());
+        
+        
     }
     public void excluirCliente(){
         
