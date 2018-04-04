@@ -19,6 +19,28 @@ public class PaisDAO {
         }
         paises.add(p);
     }
+    public Pais lerPais(String nome){ 
+        for(int i = 0; i < paises.size() ; i++){
+            if(paises.get(i).getNome().equals(nome)){
+                return paises.get(i);
+            }
+        } 
+        return null;        
+    }
+    
+    public void alterarPais(Pais c) throws Exception{
+        Pais alt = lerPais(c.getNome());
+        alt.setDigito(c.getDigito());
+    }
+    
+    public void excluirPais(String nome){
+        for(int i = 0; i < paises.size() ; i++){
+            if(paises.get(i).getNome().equals(nome)){
+               paises.remove(paises.get(i));
+            }
+            
+        } 
+    }
     
     public ArrayList<Pais> list(){
         return this.paises;

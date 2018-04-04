@@ -17,7 +17,7 @@ public class Cliente {
     private double limite;
     private Pais pais;
     private int idade;
-    private int id;
+
 
     public Cliente() {
     }

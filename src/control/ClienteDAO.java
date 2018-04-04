@@ -29,13 +29,21 @@ public class ClienteDAO {
         return null;        
     }
     
-    public void alterarCliente(Cliente c){
-        lerCliente(c.getNome());
-        
-        
+    public void alterarCliente(Cliente c) throws Exception{
+        Cliente alt = lerCliente(c.getNome());
+        alt.setIdade(c.getIdade());
+        alt.setTelefone(c.getTelefone());
+        alt.setIdade(c.getIdade());
+        alt.setPais(c.getPais());
     }
-    public void excluirCliente(){
-        
+    
+    public void excluirCliente(String nome){
+        for(int i = 0; i < clientes.size() ; i++){
+            if(clientes.get(i).getNome().equals(nome)){
+               clientes.remove(clientes.get(i));
+            }
+            
+        } 
     }
     
     public ArrayList<Cliente> listarClientes(){
