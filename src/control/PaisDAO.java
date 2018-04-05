@@ -2,30 +2,75 @@
 package control;
 
 import static java.lang.System.exit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Pais;
+import util.ConexaoBD;
 
 /**
  *
  * @author Aluno
  */
 public class PaisDAO {
-    ArrayList<Pais> paises = new ArrayList<>();
+    private Connection conexao;
+    
+    public PaisDAO(){
+        this.conexao =  ConexaoBD.Conector();
+    }
     
     public void inserirPais(Pais p)throws Exception{
-        if(paises.contains(p) || p.getNome().equals("") || p.getSigla().equals("")){
-            throw new Exception ("PAÍS JA CADASTRADO OU CAMPO NÃO INFORMADO.");
+        String sql = "insert into TB_Pais (nomeTB_Pais, siglaTB_Pais, digitosTB_Pais, "
+                                            + "values (?,?,?)"; 
+                
+        try {
+            PreparedStatement pst = this.conexao.prepareStatement(sql);
+            pst.setString(1, p.getNome());
+            pst.setString(2, p.getSigla());
+            pst.setInt(3, p.getDigito());
+            
+            pst.execute();
+            pst.close();
+
+            JOptionPane.showMessageDialog(null, "Pais inserido com sucesso");
+        } catch (Exception e) {
+            System.err.println("\n============================================");
+            System.err.println("\nCLASSE PAIS DAO");
+            System.err.println("\nERRO NO MÉTODO inserirPais");
+            System.err.println("\nCAUSA: " + e.getCause());
+            System.err.println("\nMENSAGEM " + e.getMessage());
+            e.printStackTrace();
+            System.err.println("\n============================================");
+            throw new RuntimeException(e);              
         }
-        paises.add(p);
     }
+    
     public Pais lerPais(String nome){ 
-        for(int i = 0; i < paises.size() ; i++){
-            if(paises.get(i).getNome().equals(nome)){
-                return paises.get(i);
-            }
-        } 
-        return null;        
+        String sql = "select * from TB_Pais where nomeTB_Pais like 'nome'%;";
+        try {
+            Pais c = new Pais();
+            PreparedStatement pst = this.conexao.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            
+            c.setNome(rs.getString("nomeTB_Pais"));
+            c.setSigla(rs.getString("siglaTB_Pais"));
+            c.setDigito(rs.getInt("digitosTB_Pais"));
+              
+            rs.close();
+            pst.close();
+
+            return c;
+        } catch (Exception e) {
+            System.err.println("\n============================================");
+            System.err.println("\nCLASSE PAIS DAO");
+            System.err.println("\nERRO NO MÉTODO lerPais");
+            System.err.println("\n " + e.getCause());
+            System.err.println("\n " + e.getMessage());
+            System.err.println("\n============================================");
+            throw new RuntimeException(e);            
+        }       
     }
     
     public void alterarPais(Pais c) throws Exception{
