@@ -26,7 +26,7 @@ public class ClienteDAO {
     public void inserirCliente(Cliente c) throws Exception {
         
         String sql = "insert into TB_Cliente (nomeTB_Cliente, idadeTB_Cliente, limiteTB_Cliente,"
-                        + "telefoneTB_Cliente, TB_Pais_idTB_Pais values (?,?,?,?)"; 
+                        + "telefoneTB_Cliente, TB_Pais_idTB_Pais) values (?,?,?,?)"; 
                 
         try {
             PreparedStatement pst = this.conexao.prepareStatement(sql);
@@ -115,7 +115,7 @@ public class ClienteDAO {
     public void alterarCliente(Cliente c) throws Exception{
         String nome = c.getNome();
         String sql = "update TB_Cliente set idadeTB_Cliente = ?, telefoneTB_Cliente = ?, TB_Pais_idTB_Pais = ?" 
-                    + "where nomeTB_Cliente like 'nome'%;";
+                    + "where nomeTB_Cliente like 'nome%';";
         try {
             PreparedStatement pst = this.conexao.prepareStatement(sql);
             

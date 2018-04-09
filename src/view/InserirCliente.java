@@ -5,12 +5,11 @@
  */
 package view;
 
-import static java.lang.Integer.parseInt;
+
 import model.Cliente;
-import control.ControleCliente;
+import control.ClienteDAO;
 import model.Pais;
-import control.ControlePais;
-import java.util.stream.Stream;
+import control.PaisDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,21 +17,22 @@ import javax.swing.JOptionPane;
  * @author Aluno
  */
 public class InserirCliente extends javax.swing.JFrame {
-    private ControleCliente clienteControle;
-    private ControlePais paisControle;
+    private ClienteDAO clienteControle;
+    private PaisDAO paisControle;
     private Pais paisSelecionado;
+    private Cliente c;
     
     public InserirCliente() {
         initComponents();
     }
 
-    InserirCliente(ControleCliente clientecCntrole, ControlePais paisControle) {
+    InserirCliente(ClienteDAO clientecCntrole, PaisDAO paisControle) {
         this();
         
         this.clienteControle = clientecCntrole;
         this.paisControle = paisControle;
         
-        this.paisControle.list().forEach(item -> jCBPais.addItem(item.getNome()));
+        this.paisControle.lerPaises().forEach(item -> jCBPais.addItem(item.getNome()));
     }
 
   
@@ -204,11 +204,9 @@ public class InserirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFNomeActionPerformed
 
     private void jBInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirActionPerformed
-        Cliente c = new Cliente();
         
         try {
             c.setNome(jTFNome.getText());
-
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
@@ -221,6 +219,7 @@ public class InserirCliente extends javax.swing.JFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
+        
         try {
             clienteControle.inserirCliente(c);
             limpaCampos();
@@ -231,11 +230,11 @@ public class InserirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jBInserirActionPerformed
 
     private void jBListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListarActionPerformed
-        jTAList.setText(clienteControle.list().toString());
+        jTAList.setText(clienteControle.lerClientes().toString());
     }//GEN-LAST:event_jBListarActionPerformed
 
     private void jCBPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBPaisActionPerformed
-        for (Pais paisAtual : paisControle.list()) {
+        for (Pais paisAtual : paisControle.lerPaises()) {
             if (paisAtual.getNome().equalsIgnoreCase((String) jCBPais.getSelectedItem())) {
                 paisSelecionado = paisAtual;
             }

@@ -5,6 +5,7 @@ import static java.lang.System.exit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Pais;
@@ -22,7 +23,7 @@ public class PaisDAO {
     }
     
     public void inserirPais(Pais p)throws Exception{
-        String sql = "insert into TB_Pais (nomeTB_Pais, siglaTB_Pais, digitosTB_Pais, "
+        String sql = "insert into TB_Pais (nomeTB_Pais, siglaTB_Pais, digitosTB_Pais)"
                                             + "values (?,?,?)"; 
                 
         try {
@@ -73,21 +74,76 @@ public class PaisDAO {
         }       
     }
     
+    public ArrayList<Pais> lerPaises(){
+        String sql = "select * from TB_Pais";
+        
+        try{
+            ArrayList<Pais> paises = new ArrayList<>();
+            PreparedStatement pst = this.conexao.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                Pais p = new Pais();
+                p.setNome(rs.getString("nomeTB_Pais"));
+                p.setSigla(rs.getString("siglaTB_Pais"));
+                p.setDigito(rs.getInt("digitosTB_Pais"));
+                
+                paises.add(p);
+                
+            }
+            pst.close();
+            rs.close();
+            
+            return paises;
+            
+            }catch(Exception e){
+                System.err.println("\n============================================");
+                System.err.println("\nCLASSE PAIS DAO");
+                System.err.println("\nERRO NO MÉTODO lerPaises");
+                System.err.println("\n " + e.getCause());
+                System.err.println("\n " + e.getMessage());
+                System.err.println("\n============================================");
+                throw new RuntimeException(e);     
+        }
+    }
+    
     public void alterarPais(Pais c) throws Exception{
-        Pais alt = lerPais(c.getNome());
-        alt.setDigito(c.getDigito());
+        String nome = c.getNome();
+        String sql = "update TB_Pais set digitosTB_Pais = ? where nomeTB_Pais like nome%;";
+        try {
+            PreparedStatement pst = this.conexao.prepareStatement(sql);
+            
+            pst.setInt(1, c.getDigito());
+            
+            pst.execute();
+            pst.close();
+        } catch (Exception e) {
+            System.err.println("\n============================================");
+            System.err.println("\nCLASSE PAIS DAO");
+            System.err.println("\nERRO NO MÉTODO alterarPais");
+            System.err.println("\n " + e.getCause());
+            System.err.println("\n " + e.getMessage());
+            System.err.println("\n============================================");
+            throw new RuntimeException(e);            
+        }
     }
     
     public void excluirPais(String nome){
-        for(int i = 0; i < paises.size() ; i++){
-            if(paises.get(i).getNome().equals(nome)){
-               paises.remove(paises.get(i));
-            }
-            
-        } 
+        String sql = "delete from TB_Pais where nomeTB_Cliente like nome%;";
+        
+        try {
+            PreparedStatement pst = this.conexao.prepareStatement(sql);
+            pst.execute();
+            pst.close();
+        } catch (Exception e) {
+            System.err.println("\n============================================");
+            System.err.println("\nCLASSE PAIS DAO");
+            System.err.println("\nERRO NO MÉTODO excluirPais");
+            System.err.println("\n " + e.getCause());
+            System.err.println("\n " + e.getMessage());
+            System.err.println("\n============================================");
+            throw new RuntimeException(e);            
+        }
     }
-    
-    public ArrayList<Pais> list(){
-        return this.paises;
-    }
+
 }

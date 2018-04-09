@@ -5,10 +5,8 @@
  */
 package view;
 
-import control.ControlePais;
+import control.PaisDAO;
 import model.Pais;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,9 +14,10 @@ import javax.swing.JOptionPane;
  * @author Aluno
  */
 public class InserirPais extends javax.swing.JFrame {
-    private ControlePais paisControle;
+    private PaisDAO paisControle;
+    Pais p = new Pais();
 
-    InserirPais(ControlePais paisControle) {
+    InserirPais(PaisDAO paisControle) {
         this();
         
         this.paisControle = paisControle;
@@ -159,8 +158,6 @@ public class InserirPais extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFSiglaPaisActionPerformed
 
     private void jBInserirPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirPaisActionPerformed
-        Pais p = new Pais();
-        
         p.setNome(jTFNomePais.getText());
         p.setSigla(jTFSiglaPais.getText());
         p.setDigito(new Integer(jTFDigitos.getText().trim()));;
@@ -175,17 +172,13 @@ public class InserirPais extends javax.swing.JFrame {
     }//GEN-LAST:event_jBInserirPaisActionPerformed
 
     private void jBListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBListarActionPerformed
-        jTAList.setText(paisControle.list().toString());
+        jTAList.setText(paisControle.lerPaises().toString());
     }//GEN-LAST:event_jBListarActionPerformed
 
     
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_jBCancelarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

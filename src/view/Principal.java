@@ -5,24 +5,22 @@
  */
 package view;
 
-import control.ControleCliente;
-import control.ControlePais;
-import model.Cliente;
-import model.Pais;
+import control.ClienteDAO;
+import control.PaisDAO;
 
 /**
  *
  * @author Aluno
  */
 public class Principal extends javax.swing.JFrame {
-    private ControleCliente clienteControle;
-    private ControlePais paisControle;
+    private final ClienteDAO clienteControle;
+    private final PaisDAO paisControle;
     
     public Principal() {
         initComponents();
         
-        clienteControle = new ControleCliente();
-        paisControle = new ControlePais();
+        clienteControle = new ClienteDAO();
+        paisControle = new PaisDAO();
     }
 
     @SuppressWarnings("unchecked")
