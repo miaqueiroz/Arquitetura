@@ -20,16 +20,16 @@ public class InserirCliente extends javax.swing.JFrame {
     private ClienteDAO clienteControle;
     private PaisDAO paisControle;
     private Pais paisSelecionado;
-    private Cliente c;
+    private Cliente c = new Cliente();
     
     public InserirCliente() {
         initComponents();
     }
 
-    InserirCliente(ClienteDAO clientecCntrole, PaisDAO paisControle) {
+    InserirCliente(ClienteDAO clienteControle, PaisDAO paisControle) {
         this();
         
-        this.clienteControle = clientecCntrole;
+        this.clienteControle = clienteControle;
         this.paisControle = paisControle;
         
         this.paisControle.lerPaises().forEach(item -> jCBPais.addItem(item.getNome()));
@@ -211,6 +211,8 @@ public class InserirCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
         c.setIdade(new Integer(jTFIdade.getText()));
+        c.setLimite(c.getLimite());
+        System.out.println(c.getLimite());
         c.setPais(paisSelecionado);
 
         try {

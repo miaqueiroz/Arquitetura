@@ -160,7 +160,7 @@ public class InserirPais extends javax.swing.JFrame {
     private void jBInserirPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInserirPaisActionPerformed
         p.setNome(jTFNomePais.getText());
         p.setSigla(jTFSiglaPais.getText());
-        p.setDigito(new Integer(jTFDigitos.getText().trim()));;
+        p.setDigito(new Integer(jTFDigitos.getText().trim()));
         
         try {
             paisControle.inserirPais(p);

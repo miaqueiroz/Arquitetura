@@ -12,6 +12,7 @@ import java.util.Objects;
  * @author Aluno
  */
 public class Pais {
+    private int id;
     private String nome;
     private String sigla;
     private int digito; 
@@ -23,6 +24,14 @@ public class Pais {
         this.nome = nome;
         this.sigla = sigla;
         this.digito = digito;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     public String getNome() {
@@ -81,7 +90,7 @@ public class Pais {
 
     @Override
     public String toString() {
-        return "\nPais{" + "nome=" + nome + ", sigla=" + sigla + '}';
+        return this.nome;
     }      
     
 }

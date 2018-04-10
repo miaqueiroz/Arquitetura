@@ -12,6 +12,7 @@ import java.util.Objects;
  * @author Aluno
  */
 public class Cliente {
+    private int id;
     private String nome;
     private String telefone;
     private double limite;
@@ -30,6 +31,14 @@ public class Cliente {
         this.idade = idade;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+ 
     public String getNome() {
         return nome;
     }

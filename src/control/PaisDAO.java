@@ -129,7 +129,7 @@ public class PaisDAO {
     }
     
     public void excluirPais(String nome){
-        String sql = "delete from TB_Pais where nomeTB_Cliente like nome%;";
+        String sql = "delete from TB_Pais where nomeTB_Pais like nome%;";
         
         try {
             PreparedStatement pst = this.conexao.prepareStatement(sql);

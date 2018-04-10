@@ -26,21 +26,20 @@ public class ClienteDAO {
     public void inserirCliente(Cliente c) throws Exception {
         
         String sql = "insert into TB_Cliente (nomeTB_Cliente, idadeTB_Cliente, limiteTB_Cliente,"
-                        + "telefoneTB_Cliente, TB_Pais_idTB_Pais) values (?,?,?,?)"; 
-                
-        try {
+                        + "telefoneTB_Cliente, TB_Pais_idTB_Pais) values (?,?,?,?,?)"; 
+        try{
             PreparedStatement pst = this.conexao.prepareStatement(sql);
+            
             pst.setString(1, c.getNome());
             pst.setInt(2, c.getIdade());
             pst.setDouble(3, c.getLimite());
             pst.setString(4, c.getTelefone());
-            pst.setObject(5, c.getPais());
-           
+            pst.setInt(5, c.getPais().getId());
+
             pst.execute();
             pst.close();
-
-            JOptionPane.showMessageDialog(null, "Cliente inserido com sucesso");
-        } catch (Exception e) {
+            
+        } catch(Exception e){
             System.err.println("\n============================================");
             System.err.println("\nCLASSE CLIENTE DAO");
             System.err.println("\nERRO NO MÉTODO inserirCliente");
@@ -48,12 +47,12 @@ public class ClienteDAO {
             System.err.println("\nMENSAGEM " + e.getMessage());
             e.printStackTrace();
             System.err.println("\n============================================");
-            throw new RuntimeException(e);              
+            throw new RuntimeException(e); 
         }
     }
     
     public Cliente lerCliente(String nome){ 
-        String sql = "select * from TB_Cliente where nomeTB_Cliente like 'nome'%;";
+        String sql = "select * from TB_Cliente where nomeTB_Cliente like 'nome%';";
         try {
             Cliente c = new Cliente();
             PreparedStatement pst = this.conexao.prepareStatement(sql);

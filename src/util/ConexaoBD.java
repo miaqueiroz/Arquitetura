@@ -21,7 +21,7 @@ public class ConexaoBD {
         //String url = "jdbc:mysql://localhost:3306/dbinfox";
         String url = "jdbc:mysql://localhost/bdarquitetura?autoReconnect=true&useSSL=false";
         String user = "root";
-        String password = "wi-fi147";
+        String password = "utfpr";
         //Estabelecendo a conexão com o banco
         try {
             //Class.forName(driver);
