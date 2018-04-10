@@ -27,8 +27,6 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBCliente = new javax.swing.JButton();
-        jBPais = new javax.swing.JButton();
         jMBar = new javax.swing.JMenuBar();
         jMCliente = new javax.swing.JMenu();
         jMIInserirC = new javax.swing.JMenuItem();
@@ -43,20 +41,6 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jBCliente.setText("Cliente");
-        jBCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBClienteActionPerformed(evt);
-            }
-        });
-
-        jBPais.setText("Pais");
-        jBPais.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBPaisActionPerformed(evt);
-            }
-        });
-
         jMCliente.setText("Cliente");
 
         jMIInserirC.setText("Inserir");
@@ -68,6 +52,11 @@ public class Principal extends javax.swing.JFrame {
         jMCliente.add(jMIInserirC);
 
         jMIPesquisarC.setText("Pesquisar");
+        jMIPesquisarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIPesquisarCActionPerformed(evt);
+            }
+        });
         jMCliente.add(jMIPesquisarC);
 
         jMIAlterarC.setText("Alterar");
@@ -81,9 +70,19 @@ public class Principal extends javax.swing.JFrame {
         jMPais.setText("Pais");
 
         jMIInserirP.setText("Inserir");
+        jMIInserirP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIInserirPActionPerformed(evt);
+            }
+        });
         jMPais.add(jMIInserirP);
 
         jMIPesquisarP.setText("Pesquisar");
+        jMIPesquisarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIPesquisarPActionPerformed(evt);
+            }
+        });
         jMPais.add(jMIPesquisarP);
 
         jMIAlterarP.setText("Alterar");
@@ -100,33 +99,32 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jBCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addComponent(jBPais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
-                .addComponent(jBCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBPais)
-                .addContainerGap())
+            .addGap(0, 191, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBClienteActionPerformed
-        new InserirCliente(clienteControle, paisControle).setVisible(true);
-    }//GEN-LAST:event_jBClienteActionPerformed
-
-    private void jBPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPaisActionPerformed
-        new InserirPais(paisControle).setVisible(true);
-    }//GEN-LAST:event_jBPaisActionPerformed
-
     private void jMIInserirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIInserirCActionPerformed
-        // TODO add your handling code here:
+        new InserirCliente(clienteControle, paisControle).setVisible(true);
     }//GEN-LAST:event_jMIInserirCActionPerformed
+
+    private void jMIInserirPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIInserirPActionPerformed
+        new InserirPais(paisControle).setVisible(true);
+    }//GEN-LAST:event_jMIInserirPActionPerformed
+
+    private void jMIPesquisarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIPesquisarCActionPerformed
+        new PesquisarCliente(clienteControle, paisControle).setVisible(true);
+    }//GEN-LAST:event_jMIPesquisarCActionPerformed
+
+    private void jMIPesquisarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIPesquisarPActionPerformed
+        new PesquisarPais(paisControle).setVisible(true);
+    }//GEN-LAST:event_jMIPesquisarPActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -161,8 +159,6 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBCliente;
-    private javax.swing.JButton jBPais;
     private javax.swing.JMenuBar jMBar;
     private javax.swing.JMenu jMCliente;
     private javax.swing.JMenuItem jMIAlterarC;

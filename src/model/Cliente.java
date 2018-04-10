@@ -19,7 +19,6 @@ public class Cliente {
     private Pais pais;
     private int idade;
 
-
     public Cliente() {
     }
 
@@ -96,7 +95,7 @@ public class Cliente {
         }else{
             this.limite = 500.00;
         }
-    }
+    } 
     
     @Override
     public int hashCode() {

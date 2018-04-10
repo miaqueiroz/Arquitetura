@@ -193,6 +193,7 @@ public class InserirCliente extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIdadeActionPerformed
@@ -212,7 +213,6 @@ public class InserirCliente extends javax.swing.JFrame {
         }
         c.setIdade(new Integer(jTFIdade.getText()));
         c.setLimite(c.getLimite());
-        System.out.println(c.getLimite());
         c.setPais(paisSelecionado);
 
         try {
