@@ -29,6 +29,17 @@ public class Principal extends javax.swing.JFrame {
 
         jBCliente = new javax.swing.JButton();
         jBPais = new javax.swing.JButton();
+        jMBar = new javax.swing.JMenuBar();
+        jMCliente = new javax.swing.JMenu();
+        jMIInserirC = new javax.swing.JMenuItem();
+        jMIPesquisarC = new javax.swing.JMenuItem();
+        jMIAlterarC = new javax.swing.JMenuItem();
+        jMIExcluirC = new javax.swing.JMenuItem();
+        jMPais = new javax.swing.JMenu();
+        jMIInserirP = new javax.swing.JMenuItem();
+        jMIPesquisarP = new javax.swing.JMenuItem();
+        jMIAlterarP = new javax.swing.JMenuItem();
+        jMIExcluirP = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +57,45 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jMCliente.setText("Cliente");
+
+        jMIInserirC.setText("Inserir");
+        jMIInserirC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIInserirCActionPerformed(evt);
+            }
+        });
+        jMCliente.add(jMIInserirC);
+
+        jMIPesquisarC.setText("Pesquisar");
+        jMCliente.add(jMIPesquisarC);
+
+        jMIAlterarC.setText("Alterar");
+        jMCliente.add(jMIAlterarC);
+
+        jMIExcluirC.setText("Excluir");
+        jMCliente.add(jMIExcluirC);
+
+        jMBar.add(jMCliente);
+
+        jMPais.setText("Pais");
+
+        jMIInserirP.setText("Inserir");
+        jMPais.add(jMIInserirP);
+
+        jMIPesquisarP.setText("Pesquisar");
+        jMPais.add(jMIPesquisarP);
+
+        jMIAlterarP.setText("Alterar");
+        jMPais.add(jMIAlterarP);
+
+        jMIExcluirP.setText("Excluir");
+        jMPais.add(jMIExcluirP);
+
+        jMBar.add(jMPais);
+
+        setJMenuBar(jMBar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,11 +106,11 @@ public class Principal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addComponent(jBCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBPais)
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -73,6 +123,10 @@ public class Principal extends javax.swing.JFrame {
     private void jBPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPaisActionPerformed
         new InserirPais(paisControle).setVisible(true);
     }//GEN-LAST:event_jBPaisActionPerformed
+
+    private void jMIInserirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIInserirCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMIInserirCActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -109,5 +163,16 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCliente;
     private javax.swing.JButton jBPais;
+    private javax.swing.JMenuBar jMBar;
+    private javax.swing.JMenu jMCliente;
+    private javax.swing.JMenuItem jMIAlterarC;
+    private javax.swing.JMenuItem jMIAlterarP;
+    private javax.swing.JMenuItem jMIExcluirC;
+    private javax.swing.JMenuItem jMIExcluirP;
+    private javax.swing.JMenuItem jMIInserirC;
+    private javax.swing.JMenuItem jMIInserirP;
+    private javax.swing.JMenuItem jMIPesquisarC;
+    private javax.swing.JMenuItem jMIPesquisarP;
+    private javax.swing.JMenu jMPais;
     // End of variables declaration//GEN-END:variables
 }

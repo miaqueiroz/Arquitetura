@@ -39,6 +39,7 @@ public class ClienteDAO {
             pst.execute();
             pst.close();
             
+            JOptionPane.showMessageDialog(null, "Cliente inserido com sucesso");
         } catch(Exception e){
             System.err.println("\n============================================");
             System.err.println("\nCLASSE CLIENTE DAO");
@@ -80,7 +81,8 @@ public class ClienteDAO {
     }
 
     public ArrayList<Cliente> lerClientes(){
-        String sql = "select * from TB_Cliente;";
+        String sql = "select * from TB_Cliente inner join TB_Pais on idTB_Pais = idTB_Cliente";
+        
         try {
             ArrayList<Cliente> clientes = new ArrayList<>();
             PreparedStatement pst = this.conexao.prepareStatement(sql);
@@ -88,18 +90,27 @@ public class ClienteDAO {
             
             while(rs.next()){
                 Cliente c = new Cliente();
+                
                 c.setNome(rs.getString("nomeTB_Cliente"));
                 c.setIdade(rs.getInt("idadeTB_Cliente"));
                 c.setLimite(rs.getDouble("limiteTB_Cliente"));
                 c.setTelefone(rs.getString("telefoneTB_Cliente"));
-                c.setPais((Pais) rs.getObject("TB_Pais_idTB_Pais"));
+                
+                Pais p = new Pais();
+                p.setId(rs.getInt("idTB_Pais"));
+                p.setNome(rs.getString("nomeTB_Pais"));
+                p.setSigla(rs.getString("siglaTB_Pais"));
+                p.setDigito(rs.getInt("digitosTB_Pais"));
+                
+                c.setPais(p);
                 
                 clientes.add(c);
             }
-            rs.close();
             pst.close();
-
+            rs.close();
+            
             return clientes;
+            
         } catch (Exception e) {
             System.err.println("\n============================================");
             System.err.println("\nCLASSE CLIENTE DAO");

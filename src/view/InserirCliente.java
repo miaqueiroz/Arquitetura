@@ -236,7 +236,7 @@ public class InserirCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jBListarActionPerformed
 
     private void jCBPaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBPaisActionPerformed
-        for (Pais paisAtual : paisControle.lerPaises()) {
+        for (Pais paisAtual : paisControle.lerPaises()){
             if (paisAtual.getNome().equalsIgnoreCase((String) jCBPais.getSelectedItem())) {
                 paisSelecionado = paisAtual;
             }
@@ -252,7 +252,7 @@ public class InserirCliente extends javax.swing.JFrame {
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBInserir;
     private javax.swing.JButton jBListar;
-    private javax.swing.JComboBox<String> jCBPais;
+    private javax.swing.JComboBox<Object> jCBPais;
     private javax.swing.JLabel jLIdade;
     private javax.swing.JLabel jLNome;
     private javax.swing.JLabel jLPais;

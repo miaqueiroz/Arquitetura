@@ -90,7 +90,7 @@ public class Pais {
 
     @Override
     public String toString() {
-        return this.nome;
+        return "\nNome: " + this.nome + "\nID: " + this.id;
     }      
     
 }

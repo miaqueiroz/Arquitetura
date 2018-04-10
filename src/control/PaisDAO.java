@@ -55,6 +55,7 @@ public class PaisDAO {
             PreparedStatement pst = this.conexao.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             
+            c.setId(rs.getInt("idTB_Pais"));
             c.setNome(rs.getString("nomeTB_Pais"));
             c.setSigla(rs.getString("siglaTB_Pais"));
             c.setDigito(rs.getInt("digitosTB_Pais"));
@@ -84,6 +85,7 @@ public class PaisDAO {
             
             while(rs.next()){
                 Pais p = new Pais();
+                p.setId(rs.getInt("idTB_Pais"));
                 p.setNome(rs.getString("nomeTB_Pais"));
                 p.setSigla(rs.getString("siglaTB_Pais"));
                 p.setDigito(rs.getInt("digitosTB_Pais"));
