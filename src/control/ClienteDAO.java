@@ -53,20 +53,31 @@ public class ClienteDAO {
     }
     
     public Cliente lerCliente(String nome){ 
-        String sql = "select * from TB_Cliente where nomeTB_Cliente like '"+nome+"%';";
+        String sql = "select * from TB_Cliente inner join TB_Pais on idTB_Pais = idTB_Cliente"
+                + " where nomeTB_Cliente like '"+nome+"%';";
         try {
             Cliente c = new Cliente();
+            
             PreparedStatement pst = this.conexao.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
+            
             if(rs.next()){
-            c.setNome(rs.getString("nomeTB_Cliente"));
-            c.setIdade(rs.getInt("idadeTB_Cliente"));
-            c.setLimite(rs.getDouble("limiteTB_Cliente"));
-            c.setTelefone(rs.getString("telefoneTB_Cliente"));
-            c.setPais((Pais) rs.getObject("TB_Pais_idTB_Pais"));
-               
-            rs.close();
-            pst.close();
+                Pais p = new Pais();
+                p.setId(rs.getInt("idTB_Pais"));
+                p.setNome(rs.getString("nomeTB_Pais"));
+                p.setSigla(rs.getString("siglaTB_Pais"));
+                p.setDigito(rs.getInt("digitosTB_Pais"));
+                
+                c.setPais(p);
+            
+                c.setNome(rs.getString("nomeTB_Cliente"));
+                c.setTelefone(rs.getString("telefoneTB_Cliente"));
+                c.setIdade(rs.getInt("idadeTB_Cliente"));
+                c.setLimite(rs.getDouble("limiteTB_Cliente"));
+                
+
+                rs.close();
+                pst.close();
             }
             else{
                 JOptionPane.showMessageDialog(null, "Erro na Busca");
@@ -92,12 +103,6 @@ public class ClienteDAO {
             ResultSet rs = pst.executeQuery();
             
             while(rs.next()){
-                Cliente c = new Cliente();
-                
-                c.setNome(rs.getString("nomeTB_Cliente"));
-                c.setIdade(rs.getInt("idadeTB_Cliente"));
-                c.setLimite(rs.getDouble("limiteTB_Cliente"));
-                c.setTelefone(rs.getString("telefoneTB_Cliente"));
                 
                 Pais p = new Pais();
                 p.setId(rs.getInt("idTB_Pais"));
@@ -105,7 +110,15 @@ public class ClienteDAO {
                 p.setSigla(rs.getString("siglaTB_Pais"));
                 p.setDigito(rs.getInt("digitosTB_Pais"));
                 
+                
+                Cliente c = new Cliente();
                 c.setPais(p);
+                c.setNome(rs.getString("nomeTB_Cliente"));
+                c.setIdade(rs.getInt("idadeTB_Cliente"));
+                c.setLimite(rs.getDouble("limiteTB_Cliente"));
+                c.setTelefone(rs.getString("telefoneTB_Cliente"));
+                
+                
                 
                 clientes.add(c);
             }
@@ -128,10 +141,11 @@ public class ClienteDAO {
     public void alterarCliente(Cliente c) throws Exception{
         String nome = c.getNome();
         String sql = "update TB_Cliente set idadeTB_Cliente = ?, telefoneTB_Cliente = ?, TB_Pais_idTB_Pais = ?" 
-                    + "where nomeTB_Cliente like '"+nome+"%';";
+                    + "where idTB_Cliente like ?";
         try {
             PreparedStatement pst = this.conexao.prepareStatement(sql);
             
+            pst.setInt(5, c.getId());
             pst.setInt(1, c.getIdade());
             pst.setDouble(2, c.getLimite());
             pst.setString(3, c.getTelefone());

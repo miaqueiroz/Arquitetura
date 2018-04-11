@@ -7,6 +7,8 @@ package view;
 
 import control.ClienteDAO;
 import control.PaisDAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Cliente;
 import model.Pais;
 
@@ -15,7 +17,7 @@ import model.Pais;
  * @author Liah Beeshop'
  */
 public class PesquisarCliente extends javax.swing.JFrame {
-    private ClienteDAO clienteControle;
+    private ClienteDAO clienteControle = new ClienteDAO();
     private PaisDAO paisControle;
     /**
      * Creates new form PesquisarCliente
@@ -210,7 +212,14 @@ public class PesquisarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCancelarCActionPerformed
 
     private void jBAlterarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarCActionPerformed
-        
+        String nome = jTFNomeC.getText();
+        Cliente cl = new Cliente();
+        cl = clienteControle.lerCliente(nome);
+        try {
+            clienteControle.alterarCliente(cl);
+        } catch (Exception ex) {
+            Logger.getLogger(PesquisarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBAlterarCActionPerformed
 
     /**
