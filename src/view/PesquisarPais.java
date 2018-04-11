@@ -82,6 +82,11 @@ public class PesquisarPais extends javax.swing.JFrame {
         });
 
         jBAlterarP.setText("Alterar");
+        jBAlterarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarPActionPerformed(evt);
+            }
+        });
 
         jBExcluirP.setText("Excluir");
 
@@ -156,6 +161,7 @@ public class PesquisarPais extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTFNomePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNomePActionPerformed
@@ -184,6 +190,10 @@ public class PesquisarPais extends javax.swing.JFrame {
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jBAlterarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarPActionPerformed
+        
+    }//GEN-LAST:event_jBAlterarPActionPerformed
 
     /**
      * @param args the command line arguments
