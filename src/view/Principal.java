@@ -60,9 +60,19 @@ public class Principal extends javax.swing.JFrame {
         jMCliente.add(jMIPesquisarC);
 
         jMIAlterarC.setText("Alterar");
+        jMIAlterarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAlterarCActionPerformed(evt);
+            }
+        });
         jMCliente.add(jMIAlterarC);
 
         jMIExcluirC.setText("Excluir");
+        jMIExcluirC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIExcluirCActionPerformed(evt);
+            }
+        });
         jMCliente.add(jMIExcluirC);
 
         jMBar.add(jMCliente);
@@ -86,9 +96,19 @@ public class Principal extends javax.swing.JFrame {
         jMPais.add(jMIPesquisarP);
 
         jMIAlterarP.setText("Alterar");
+        jMIAlterarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIAlterarPActionPerformed(evt);
+            }
+        });
         jMPais.add(jMIAlterarP);
 
         jMIExcluirP.setText("Excluir");
+        jMIExcluirP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIExcluirPActionPerformed(evt);
+            }
+        });
         jMPais.add(jMIExcluirP);
 
         jMBar.add(jMPais);
@@ -125,6 +145,22 @@ public class Principal extends javax.swing.JFrame {
     private void jMIPesquisarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIPesquisarPActionPerformed
         new PesquisarPais(paisControle).setVisible(true);
     }//GEN-LAST:event_jMIPesquisarPActionPerformed
+
+    private void jMIAlterarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlterarCActionPerformed
+        new PesquisarCliente(clienteControle, paisControle).setVisible(true);
+    }//GEN-LAST:event_jMIAlterarCActionPerformed
+
+    private void jMIExcluirCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIExcluirCActionPerformed
+        new PesquisarCliente(clienteControle, paisControle).setVisible(true);
+    }//GEN-LAST:event_jMIExcluirCActionPerformed
+
+    private void jMIAlterarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIAlterarPActionPerformed
+        new PesquisarPais(paisControle).setVisible(true);
+    }//GEN-LAST:event_jMIAlterarPActionPerformed
+
+    private void jMIExcluirPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIExcluirPActionPerformed
+        new PesquisarPais(paisControle).setVisible(true);
+    }//GEN-LAST:event_jMIExcluirPActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

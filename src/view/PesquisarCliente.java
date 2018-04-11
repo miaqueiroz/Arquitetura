@@ -52,6 +52,9 @@ public class PesquisarCliente extends javax.swing.JFrame {
         jTFLimiteC = new javax.swing.JTextField();
         jTFIdadeC = new javax.swing.JTextField();
         jTFPaisC = new javax.swing.JTextField();
+        jBAlterarC = new javax.swing.JButton();
+        jBExcluirC = new javax.swing.JButton();
+        jBCancelarC = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,37 +90,56 @@ public class PesquisarCliente extends javax.swing.JFrame {
             }
         });
 
+        jBAlterarC.setText("Alterar");
+
+        jBExcluirC.setText("Excluir");
+
+        jBCancelarC.setText("Cancelar");
+        jBCancelarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarCActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(24, 24, 24)
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTFNomeC))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTFLimiteC, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                .addComponent(jTFTelefoneC)
-                                .addComponent(jTFPaisC, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTFIdadeC, javax.swing.GroupLayout.Alignment.TRAILING))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTFPesquisarC, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBPesquisarC)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jBAlterarC)
+                                .addGap(18, 18, 18)
+                                .addComponent(jBExcluirC))
+                            .addComponent(jTFPesquisarC, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBPesquisarC)
+                            .addComponent(jBCancelarC)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTFNomeC))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTFLimiteC)
+                                    .addComponent(jTFTelefoneC)
+                                    .addComponent(jTFPaisC, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTFIdadeC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +168,12 @@ public class PesquisarCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTFPesquisarC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBPesquisarC))
-                .addGap(44, 44, 44))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBAlterarC)
+                    .addComponent(jBExcluirC)
+                    .addComponent(jBCancelarC))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -171,6 +198,10 @@ public class PesquisarCliente extends javax.swing.JFrame {
     private void jTFPaisCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPaisCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFPaisCActionPerformed
+
+    private void jBCancelarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarCActionPerformed
+        dispose();
+    }//GEN-LAST:event_jBCancelarCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,6 +239,9 @@ public class PesquisarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAlterarC;
+    private javax.swing.JButton jBCancelarC;
+    private javax.swing.JButton jBExcluirC;
     private javax.swing.JButton jBPesquisarC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

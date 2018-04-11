@@ -49,7 +49,7 @@ public class PaisDAO {
     }
     
     public Pais lerPais(String nome){ 
-        String sql = "select * from TB_Pais where nomeTB_Pais like 'nome'%;";
+        String sql = "select * from TB_Pais where nomeTB_Pais like 'nome%';";
         try {
             Pais c = new Pais();
             PreparedStatement pst = this.conexao.prepareStatement(sql);
