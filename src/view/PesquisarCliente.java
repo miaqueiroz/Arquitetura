@@ -9,6 +9,7 @@ import control.ClienteDAO;
 import control.PaisDAO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import model.Cliente;
 import model.Pais;
 
@@ -212,14 +213,25 @@ public class PesquisarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCancelarCActionPerformed
 
     private void jBAlterarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarCActionPerformed
+       /* Pais p = new Pais();
+        p.
         String nome = jTFNomeC.getText();
         Cliente cl = new Cliente();
+        cl.setIdade(new Integer(jTFIdadeC.getText()));
+        cl.setPais(jTFPaisC.getText().toString());
+
+        try {
+            cl.setTelefone(jTFTelefoneC.getText());
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
         cl = clienteControle.lerCliente(nome);
         try {
             clienteControle.alterarCliente(cl);
         } catch (Exception ex) {
             Logger.getLogger(PesquisarCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_jBAlterarCActionPerformed
 
     /**
