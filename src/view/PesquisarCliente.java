@@ -91,6 +91,11 @@ public class PesquisarCliente extends javax.swing.JFrame {
         });
 
         jBAlterarC.setText("Alterar");
+        jBAlterarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarCActionPerformed(evt);
+            }
+        });
 
         jBExcluirC.setText("Excluir");
 
@@ -182,17 +187,18 @@ public class PesquisarCliente extends javax.swing.JFrame {
 
     private void jBPesquisarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPesquisarCActionPerformed
         String nome = jTFPesquisarC.getText();
-        Cliente cl = clienteControle.lerCliente(nome);
+        Cliente cl = new Cliente();
+        cl = clienteControle.lerCliente(nome);
         jTFNomeC.setText(cl.getNome());
         jTFTelefoneC.setText(cl.getTelefone());
         jTFLimiteC.setText(cl.getLimite()+"");
         jTFIdadeC.setText(cl.getIdade()+"");
         jTFPaisC.setText(cl.getPais().toString());
-        jTFNomeC.setEnabled(false);
-        jTFTelefoneC.setEnabled(false);
-        jTFLimiteC.setEnabled(false);
-        jTFIdadeC.setEnabled(false);     
-        jTFPaisC.setEnabled(false);       
+        jTFNomeC.setEditable(false);
+        jTFTelefoneC.setEditable(true);
+        jTFLimiteC.setEditable(true);
+        jTFIdadeC.setEditable(true);
+        jTFPaisC.setEditable(true);
     }//GEN-LAST:event_jBPesquisarCActionPerformed
 
     private void jTFPaisCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFPaisCActionPerformed
@@ -202,6 +208,10 @@ public class PesquisarCliente extends javax.swing.JFrame {
     private void jBCancelarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarCActionPerformed
         dispose();
     }//GEN-LAST:event_jBCancelarCActionPerformed
+
+    private void jBAlterarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarCActionPerformed
+        
+    }//GEN-LAST:event_jBAlterarCActionPerformed
 
     /**
      * @param args the command line arguments

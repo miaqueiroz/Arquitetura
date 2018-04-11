@@ -53,7 +53,7 @@ public class ClienteDAO {
     }
     
     public Cliente lerCliente(String nome){ 
-        String sql = "select * from TB_Cliente where nomeTB_Cliente like '"+nome+"';";
+        String sql = "select * from TB_Cliente where nomeTB_Cliente like '"+nome+"%';";
         try {
             Cliente c = new Cliente();
             PreparedStatement pst = this.conexao.prepareStatement(sql);
@@ -128,7 +128,7 @@ public class ClienteDAO {
     public void alterarCliente(Cliente c) throws Exception{
         String nome = c.getNome();
         String sql = "update TB_Cliente set idadeTB_Cliente = ?, telefoneTB_Cliente = ?, TB_Pais_idTB_Pais = ?" 
-                    + "where nomeTB_Cliente like 'nome%';";
+                    + "where nomeTB_Cliente like '"+nome+"%';";
         try {
             PreparedStatement pst = this.conexao.prepareStatement(sql);
             
@@ -151,7 +151,7 @@ public class ClienteDAO {
     }
     
     public void excluirCliente(String nome){
-        String sql = "delete from TB_Cliente where nomeTB_Cliente like nome%;";
+        String sql = "delete from TB_Cliente where nomeTB_Cliente like '"+nome+"%';";
         
         try {
             PreparedStatement pst = this.conexao.prepareStatement(sql);

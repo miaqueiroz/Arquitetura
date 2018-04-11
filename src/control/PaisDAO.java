@@ -49,7 +49,7 @@ public class PaisDAO {
     }
     
     public Pais lerPais(String nome){ 
-        String sql = "select * from TB_Pais where nomeTB_Pais like '"+nome+"';";
+        String sql = "select * from TB_Pais where nomeTB_Pais like '"+nome+"%';";
         try {
             Pais c = new Pais();
             PreparedStatement pst = this.conexao.prepareStatement(sql);
@@ -114,7 +114,7 @@ public class PaisDAO {
     
     public void alterarPais(Pais c) throws Exception{
         String nome = c.getNome();
-        String sql = "update TB_Pais set digitosTB_Pais = ? where nomeTB_Pais like nome%;";
+        String sql = "update TB_Pais set digitosTB_Pais = ? where nomeTB_Pais like '"+nome+"%';";
         try {
             PreparedStatement pst = this.conexao.prepareStatement(sql);
             
@@ -134,7 +134,7 @@ public class PaisDAO {
     }
     
     public void excluirPais(String nome){
-        String sql = "delete from TB_Pais where nomeTB_Pais like nome%;";
+        String sql = "delete from TB_Pais where nomeTB_Pais like '"+nome+"%';";
         
         try {
             PreparedStatement pst = this.conexao.prepareStatement(sql);

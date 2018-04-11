@@ -56,18 +56,21 @@ public class PesquisarPais extends javax.swing.JFrame {
 
         jLabel3.setText("Dígitos:");
 
+        jTFNomeP.setEditable(false);
         jTFNomeP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNomePActionPerformed(evt);
             }
         });
 
+        jTFSiglaP.setEditable(false);
         jTFSiglaP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFSiglaPActionPerformed(evt);
             }
         });
 
+        jTFDigitosP.setEditable(false);
         jTFDigitosP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFDigitosPActionPerformed(evt);
@@ -182,9 +185,9 @@ public class PesquisarPais extends javax.swing.JFrame {
         jTFNomeP.setText(ps.getNome());
         jTFSiglaP.setText(ps.getSigla());
         jTFDigitosP.setText(ps.getDigito()+"");
-        jTFNomeP.setEnabled(false);
-        jTFSiglaP.setEnabled(false);     
-        jTFDigitosP.setEnabled(false); 
+        jTFNomeP.setEditable(false);
+        jTFSiglaP.setEditable(false);     
+        jTFDigitosP.setEditable(true); 
     }//GEN-LAST:event_jBPesquisarPActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
