@@ -53,12 +53,12 @@ public class ClienteDAO {
     }
     
     public Cliente lerCliente(String nome){ 
-        String sql = "select * from TB_Cliente where nomeTB_Cliente like 'nome%';";
+        String sql = "select * from TB_Cliente where nomeTB_Cliente like '"+nome+"';";
         try {
             Cliente c = new Cliente();
             PreparedStatement pst = this.conexao.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            
+            if(rs.next()){
             c.setNome(rs.getString("nomeTB_Cliente"));
             c.setIdade(rs.getInt("idadeTB_Cliente"));
             c.setLimite(rs.getDouble("limiteTB_Cliente"));
@@ -67,7 +67,10 @@ public class ClienteDAO {
                
             rs.close();
             pst.close();
-
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Erro na Busca");
+            }
             return c;
         } catch (Exception e) {
             System.err.println("\n============================================");

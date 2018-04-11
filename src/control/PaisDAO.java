@@ -49,12 +49,12 @@ public class PaisDAO {
     }
     
     public Pais lerPais(String nome){ 
-        String sql = "select * from TB_Pais where nomeTB_Pais like 'nome%';";
+        String sql = "select * from TB_Pais where nomeTB_Pais like '"+nome+"';";
         try {
             Pais c = new Pais();
             PreparedStatement pst = this.conexao.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            
+            if(rs.next()){
             c.setId(rs.getInt("idTB_Pais"));
             c.setNome(rs.getString("nomeTB_Pais"));
             c.setSigla(rs.getString("siglaTB_Pais"));
@@ -62,7 +62,10 @@ public class PaisDAO {
               
             rs.close();
             pst.close();
-
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Erro na busca");
+            }
             return c;
         } catch (Exception e) {
             System.err.println("\n============================================");
